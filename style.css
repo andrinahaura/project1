@@ -185,11 +185,11 @@ section {
   font-weight: 600;
 }
 
-.section__text__p1 {
+.section_text_p1 {
   text-align: center;
 }
 
-.section__text__p2 {
+.section_text_p2 {
   font-size: 1.75rem;
   margin-bottom: 1rem;
 }
@@ -281,11 +281,12 @@ section {
 .about-containers,
 .about-details-container {
   display: flex;
+  position: center;
 }
 
-.about-pic {
+/* .about-pic {
   border-radius: 2rem;
-}
+} */
 
 .arrow {
   position: absolute;
@@ -301,11 +302,12 @@ section {
   border: rgb(53, 53, 53) 0.1rem solid;
   border-color: rgb(163, 163, 163);
   text-align: center;
+  flex-direction: column;
 }
 
 .section-container {
   gap: 4rem;
-  height: 80%;
+
 }
 
 .section__pic-container {
