@@ -1,48 +1,20 @@
 pipeline {
     agent any
-
     environment {
-        DOCKER_IMAGE = 'web'
-        CONTAINER_NAME = 'angry_moser'
-        PORT_MAPPING = '8089:80'  // Adjust the port mapping as needed
+        DOCKER_IMAGE = 'some-content-nginx'
+        CONTAINER_NAME = 'some-nginx10'
+        PORT_MAPPING = '8081:80'  // Adjust the port mapping as needed
     }
 
     stages {
-        stage('Checkout') {
-            steps {
-                checkout scm 
-            }
-        }
-
-        stage('build docker') {
-            steps {
-                    // Run Docker container based on the built image
-                    dir('/Users/hauraazzahra/project1'){
-                        sh 'docker build -t web -f Dockerfile .'
-                    }
-            }
-        }
-
-            // stage('Checkout') {
-            //     steps {
-            //         deleteDir()
-            //         checkout([$class: 'GitSCM', branches: [[name: 'main']], userRemoteConfigs: [[url: 'https://github.com/andrinahaura/project1.git']]])
-            //     }
-            // }
-        
-        // stage('build docker') {
+        // stage('Checkout') {
         //     steps {
-        //         script {
-        //             // Run Docker container based on the built image
-        //             dir('/Users/hauraazzahra/project1'){
-        //                 sh 'docker build -t web -f Dockerfile .'
-        //             }
-        //         }
+        //         // Clean workspace before checkout
+        //         deleteDir()
+        //         // Checkout the HTML source code from GitHub
+        //         git url: 'https://github.com/atoschova'
         //     }
         // }
-
-
-    
         stage('Run Docker Container') {
             steps {
                 script {
