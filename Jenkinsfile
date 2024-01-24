@@ -24,7 +24,7 @@ pipeline {
             steps {
                 script {
                     // Run Docker container based on the built image
-                   sh 'docker build -t web -f Dockerfile .'
+                   bat 'docker build -t web -f Dockerfile .'
                 }
             }
         }
