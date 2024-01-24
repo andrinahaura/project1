@@ -1,5 +1,5 @@
 # Use the official Nginx image as the base image
-FROM nginx:stable-perl
+FROM nginx:alpine
 
 # Remove the default Nginx welcome page
 RUN rm -rf /usr/share/nginx/html/*

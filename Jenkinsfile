@@ -1,9 +1,10 @@
 pipeline {
     agent any
+
     environment {
-        DOCKER_IMAGE = 'some-content-nginx'
-        CONTAINER_NAME = 'some-nginx10'
-        PORT_MAPPING = '8081:80'  // Adjust the port mapping as needed
+        DOCKER_IMAGE = 'andrinahaura/test2:latest'
+        CONTAINER_NAME = 'angry_moser'
+        PORT_MAPPING = '8089:89'  // Adjust the port mapping as needed
     }
 
     stages {
@@ -12,9 +13,30 @@ pipeline {
         //         // Clean workspace before checkout
         //         deleteDir()
         //         // Checkout the HTML source code from GitHub
-        //         git url: 'https://github.com/atoschova'
+        //         git url: 'https://github.com/andrinahaura/project1.git'
         //     }
         // }
+            stage('Checkout') {
+                steps {
+                    deleteDir()
+                    checkout([$class: 'GitSCM', branches: [[name: 'main']], userRemoteConfigs: [[url: 'https://github.com/andrinahaura/project1.git']]])
+                }
+            }
+
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    dir('project1') {
+                        // Build Docker image dengan konten HTML
+                        docker.build("${DOCKER_IMAGE}", '-f  Dockerfile .')
+                    }
+                    // // Build Docker image with the HTML content
+                    // docker.build("${DOCKER_IMAGE}", '-f Dockerfile .')
+                }
+            }
+        }
+
+
         stage('Run Docker Container') {
             steps {
                 script {
