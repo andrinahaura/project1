@@ -4,7 +4,7 @@ pipeline {
     environment {
         DOCKER_IMAGE = 'andrinahaura/test2:latest'
         CONTAINER_NAME = 'angry_moser'
-        PORT_MAPPING = '8089:89'  // Adjust the port mapping as needed
+        PORT_MAPPING = '8089:80'  // Adjust the port mapping as needed
     }
 
     stages {
@@ -23,18 +23,7 @@ pipeline {
                 }
             }
 
-        stage('Build Docker Image') {
-            steps {
-                script {
-                    dir('project1') {
-                        // Build Docker image dengan konten HTML
-                        docker.build("${DOCKER_IMAGE}", '-f  Dockerfile .')
-                    }
-                    // // Build Docker image with the HTML content
-                    // docker.build("${DOCKER_IMAGE}", '-f Dockerfile .')
-                }
-            }
-        }
+        
 
 
         stage('Run Docker Container') {
