@@ -1,5 +1,7 @@
 pipeline {
-    agent any
+    agent {
+        docker { image 'nginx:stable-perl' }
+    }
 
     environment {
         DOCKER_IMAGE = 'web'
