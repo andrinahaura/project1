@@ -13,6 +13,16 @@ pipeline {
                 checkout scm 
             }
         }
+
+        stage('build docker') {
+            steps {
+                    // Run Docker container based on the built image
+                    dir('/Users/hauraazzahra/project1'){
+                        sh 'docker build -t web -f Dockerfile .'
+                    }
+            }
+        }
+
             // stage('Checkout') {
             //     steps {
             //         deleteDir()
