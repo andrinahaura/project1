@@ -20,16 +20,16 @@ pipeline {
             //     }
             // }
         
-        stage('build docker') {
-            steps {
-                script {
-                    // Run Docker container based on the built image
-                    dir('/Users/hauraazzahra/project1'){
-                        sh 'docker build -t web -f Dockerfile .'
-                    }
-                }
-            }
-        }
+        // stage('build docker') {
+        //     steps {
+        //         script {
+        //             // Run Docker container based on the built image
+        //             dir('/Users/hauraazzahra/project1'){
+        //                 sh 'docker build -t web -f Dockerfile .'
+        //             }
+        //         }
+        //     }
+        // }
 
 
     
